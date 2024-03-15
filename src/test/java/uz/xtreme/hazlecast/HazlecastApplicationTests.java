@@ -18,9 +18,8 @@ import org.testcontainers.containers.GenericContainer;
 @SpringBootTest
 class HazlecastApplicationTests {
 
-  private static final GenericContainer<?> HAZELCAST = new FixedHostPortGenericContainer(
-      "hazelcast/hazelcast:5.5.0-SNAPSHOT-jdk17")
-      .withFixedExposedPort(5701, 5701);
+  private static final GenericContainer<?> HAZELCAST = new FixedHostPortGenericContainer<>(
+      "hazelcast/hazelcast:5.5.0-SNAPSHOT-jdk17").withFixedExposedPort(5701, 5701);
 
   @Autowired
   ApplicationContext applicationContext;

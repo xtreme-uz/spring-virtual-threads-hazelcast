@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  hazlecast:
+    image: hazelcast/hazelcast:5.5.0-SNAPSHOT-jdk17
+    environment:
+      HZ_SHUTDOWNHOOK_POLICY: GRACEFUL
+      HZ_GRACEFUL_SHUTDOWN_MAX_WAIT: 1000 # seconds
+    ports:
+      - "5701:5701"
+  hazlcast-manager:
+    image: hazelcast/management-center:5.3.3
+    ports:
+      - "8080:8080"
+    depends_on:
+      - hazlecast
+    environment:
+      MC_INIT_CMD: './bin/mc-conf.sh cluster add -H=/data -ma hazlecast:5701 -cn dev'

@@ -1,0 +1,6 @@
+# properties as environment variables
+# hazelcast-client.cluster-name -> HZCLIENT_CLUSTERNAME
+# hazelcast-client.network.cluster-members -> HZCLIENT_NETWORK_CLUSTERMEMBERS_0_
+hazelcast-client:
+  client-labels:
+    - application_name
